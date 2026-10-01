@@ -55,6 +55,10 @@ derivados de él.
 | Audio (SPU + música de CD) | OK |
 | Fases 2–10, tarjeta de memoria, final | Sin verificar todavía |
 
+### Planes a futuro
+
+- **Versión para Android** con soporte de **pantalla ancha** (widescreen).
+
 ---
 
 ## English
@@ -87,6 +91,10 @@ This repository **does not contain the game**. You supply your own copy and
 
 `run.bat -Rebuild` forces a full rebuild; `run.bat -NoLaunch` builds only.
 Never publish `data`, `out` or `tools\.build`.
+
+### Future plans
+
+- An **Android version** with **widescreen** support.
 
 ---
 
