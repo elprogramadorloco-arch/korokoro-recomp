@@ -1,0 +1,12 @@
+{
+  "$schema": "https://recomp.fyi/schema/v1.json",
+  "game": "KoroKoroPostNin",
+  "system": "PS1",
+  "type": "recomp",
+  "toolchain": "psxrecomp",
+  "status": "exploring",
+  "original": {
+    "region": "Japan",
+    "serial": "SLPS-03479"
+  }
+}

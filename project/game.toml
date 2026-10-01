@@ -1,0 +1,54 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
+[game]
+name = "KoroKoroPostNin"
+id = "SLPS-03479"
+players = 1
+exe = "disc/SLPS_034.79"
+disc = "@DISC@"   # filled in by tools/run.ps1
+load_address = "0x80010000"
+entry_pc = "0x80035ED8"
+text_size = "0x00095000"
+stack_base = "0x801FFFF0"
+
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "KoroKoro Post nin (Japan).bin"
+cue_name = "KoroKoro Post nin (Japan).cue"
+boot_exe = "SLPS_034.79"
+known_sizes = [88131792]
+known_md5 = [
+  "6897e2c85262456a16c579a531435268",
+]
+known_sha1 = [
+  "31fe2263e6f7f4e0189d9285ff038d3f32ed7048",
+]
+known_crc32 = [
+  "3dcebf02",
+]
+
+[recompiler]
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "generated"
+strict = true
+
+[runtime]
+window_title = "KoroKoroPostNin Recompiled"
+memcard_dir = "saves"
+overlay_cache = true
+
+[video]
+renderer = "opengl"
+aspect_ratio = "4:3"
+
+[controller]
+default_mode = "digital"
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 1
+required_disc_fp = "59233df3d4716ed3f0aa50184b37a7b62d920380cbd442c772ef2feb783f03b3"

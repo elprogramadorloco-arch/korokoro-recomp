@@ -1,0 +1,15 @@
+# User inputs and private derived builds -- never commit.
+/data/*
+!/data/README.txt
+/out/
+/tools/.cache/
+/tools/.build/
+
+# Disc / BIOS formats anywhere
+*.bin
+*.cue
+*.chd
+*.iso
+*.img
+*.mcd
+*.mcr

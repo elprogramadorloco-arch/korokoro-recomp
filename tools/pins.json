@@ -1,0 +1,43 @@
+{
+  "toolchain": {
+    "name": "cmake-clang-v1 1.0.14 (LLVM-MinGW 22, CMake, Ninja, Python 3.12)",
+    "url": "https://github.com/RetroPortingToolKit/RetroPorting-Toolchains/releases/download/v1.0.14/cmake-clang-v1-windows-x64.zip",
+    "sha256": "28da9742385e7ff875b3d9311e8ed89dbdc84f27b6ecba2bc0d0acc11f6d2b4d"
+  },
+  "sources": [
+    {
+      "name": "psxrecomp",
+      "repo": "mstan/psxrecomp",
+      "commit": "3505f2a014a6424b78b8599d3506362356e4bc7b",
+      "sha256": "a51a6a85f563a8eba4f33a4eab8d7f78047e5a4e82b6a14f712b7cff202b1fc4",
+      "dest": "psxrecomp"
+    },
+    {
+      "name": "recomp-net",
+      "repo": "RetroPortingToolKit/recomp-net",
+      "commit": "c58f125a3cc3468fc84012cf4eeb50cc0b62c379",
+      "sha256": "0feefc40dcee7def24c66cc4af76c12c425f66cc01aece7b79d955e97a6bc03e",
+      "dest": "psxrecomp/lib/recomp-net"
+    },
+    {
+      "name": "rbengine",
+      "repo": "RetroPortingToolKit/rbengine",
+      "commit": "2a03e73693acee0fb78076ea058642c931bef12e",
+      "sha256": "3879eee1ab04bd3d36d164779acea68d0fd6eefc904c4a8d393ae41464b80e82",
+      "dest": "psxrecomp/lib/retcomm-rbengine"
+    },
+    {
+      "name": "recomp-ui",
+      "repo": "RetroPortingToolKit/recomp-ui",
+      "commit": "5de138a8b176ee66ee583ce1748f2059b97e15ca",
+      "sha256": "9c88d64265273a78b9aad673a35d63a57116fa78e8427dc4fbee3fb6a9f0dedf",
+      "dest": "recomp-ui"
+    }
+  ],
+  "game": {
+    "exe_name": "KoroKoroPostNin",
+    "serial": "SLPS-03479",
+    "data_track_size": 88131792,
+    "data_track_md5": "6897e2c85262456a16c579a531435268"
+  }
+}
