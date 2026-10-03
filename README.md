@@ -1,6 +1,102 @@
 # KoroKoroRecomp
 
-[Español](#español) · [English](#english)
+[English](#english) · [Español](#español)
+
+---
+
+## English
+
+### What is it?
+
+KoroKoroRecomp is a **native Windows static recompilation** of *KoroKoro Post
+nin* (PlayStation, Japan, SLPS-03479, Media Entertainment 2002). It is not an
+emulator: the game code is translated to C and compiled into a native `.exe`
+with [psxrecomp](https://github.com/mstan/psxrecomp).
+
+This repository **does not contain the game**. You supply your own copy and
+`run.bat` builds a private copy on your PC.
+
+### Requirements
+
+- 64-bit Windows (10 or 11).
+- Internet on the first run (about 230 MB of downloads).
+- **No Visual Studio, CMake, Python or Git needed.** `run.bat` downloads a
+  portable toolchain (LLVM-MinGW + CMake + Ninja + Python) and the psxrecomp
+  sources at pinned commits, and verifies every download with SHA-256.
+- About 3 GB of free disk space.
+- Your own copy of **KoroKoro Post nin (Japan)**, `SLPS-03479`, in one of these
+  formats:
+  - a `.chd`, or
+  - a `.cue` with its `.bin`.
+
+  Expected data track (Redump): `88,131,792` bytes,
+  MD5 `6897e2c85262456a16c579a531435268`.
+
+### How to use it
+
+1. Copy your `.chd` (or your `.cue` + `.bin`) into the `data` folder.
+2. Run `run.bat`.
+3. The first run takes a while (it downloads the toolchain, verifies the disc,
+   recompiles the game and builds the executable). When it finishes, the game
+   starts on its own.
+4. Later runs start the game directly. You can also open
+   `out\KoroKoroPostNin.exe`.
+
+Options: `run.bat -Rebuild` forces a full rebuild; `run.bat -NoLaunch` builds
+only.
+
+Never publish `data`, `out` or `tools\.build`: they contain your disc or files
+derived from it.
+
+### Status
+
+| Part | Status |
+| --- | --- |
+| Boot, title, menus, intro | OK, compared with DuckStation |
+| Stage 1, pause, time up, game over, continue | OK, compared with DuckStation |
+| Audio (SPU + CD music) | OK |
+| Stages 2–10, memory card, ending | Not verified yet |
+
+### Android version (alpha)
+
+> ⚠️ **Alpha:** it works, but it is still in development; it may have bugs and
+> has not been tested on many phone models yet.
+
+It includes full-screen **widescreen** and **mobile controls**:
+
+| Action | Control |
+| --- | --- |
+| Turn the maze | Tilt the phone like a steering wheel (accelerometer) |
+| Title menu and はい / いいえ (yes/no) dialogs | Tap the option, like an Android button |
+| "PRESS START" screen | Tap anywhere |
+| Other screens | Touch zones: left third ↑/↓, centre START, right third ✕ (top) / ○ (bottom) |
+
+🚧 **In development:** making every control fully native to the phone (touch
+buttons on every screen, with no dependence on PS1 buttons).
+
+It is built like the PC version, from a separate package:
+
+1. Download `KoroKoroRecomp-Android-v0.1.zip` from the
+   [release](https://github.com/elprogramadorloco-arch/korokoro-recomp/releases)
+   and unzip it to a **short path without accents** (for example
+   `C:\KoroKoroAndroid`).
+2. Copy your `.chd` (or your `.cue` + `.bin`) into `data`.
+3. Run `run.bat`. The first run downloads only official tools at pinned
+   versions (the same portable toolchain, Eclipse Temurin JDK 17 and Google's
+   Android SDK/NDK through its `sdkmanager`; about 1.5 GB) and asks you to
+   **accept the Android SDK licenses** (answer `y`). No Android Studio or
+   manual installs needed.
+4. When it finishes (20–60 min the first time) you get
+   `out\KoroKoroPostNin.apk`. Copy it to your phone any way you like (cable,
+   cloud drive, etc.) and open it there; Android will ask you to allow
+   "install unknown apps". No USB debugging or PC connection needed.
+
+Requirements: 64-bit Windows 10/11, about 8 GB of free disk space and an
+Android 8.0 or newer phone with a 64-bit (arm64) system, as almost every phone
+from recent years has.
+
+**The APK contains your disc:** install it on your own phone only and never
+share it.
 
 ---
 
@@ -98,68 +194,5 @@ móviles de los últimos años.
 
 ---
 
-## English
-
-### What is it?
-
-KoroKoroRecomp is a **native Windows static recompilation** of *KoroKoro Post
-nin* (PlayStation, Japan, SLPS-03479). It is not an emulator: the game code is
-translated to C and compiled into a native `.exe` with
-[psxrecomp](https://github.com/mstan/psxrecomp).
-
-This repository **does not contain the game**. You supply your own copy and
-`run.bat` builds a private copy on your PC.
-
-### Requirements
-
-- 64-bit Windows 10/11, Internet on the first run (~230 MB), ~3 GB free disk.
-- **No Visual Studio, CMake, Python or Git needed.** `run.bat` downloads a
-  pinned portable toolchain and the pinned psxrecomp sources, verifying every
-  download with SHA-256.
-- Your own dump of **KoroKoro Post nin (Japan)** (`SLPS-03479`) as `.chd` or
-  `.cue` + `.bin` (data track `88,131,792` bytes, MD5
-  `6897e2c85262456a16c579a531435268`).
-
-### Usage
-
-1. Put your `.chd` (or `.cue` + `.bin`) in `data`.
-2. Run `run.bat`. The first run downloads, verifies, recompiles and builds, then
-   starts the game. Later runs start it directly (`out\KoroKoroPostNin.exe`).
-
-`run.bat -Rebuild` forces a full rebuild; `run.bat -NoLaunch` builds only.
-Never publish `data`, `out` or `tools\.build`.
-
-### Android version (alpha)
-
-> ⚠️ **Alpha:** it works, but it is still in development; expect bugs, and it
-> has not been tested on many phone models yet.
-
-Full-screen **widescreen** and **mobile controls**: tilt the phone to turn
-the maze, tappable Android-style buttons on the title menu and yes/no dialogs,
-tap anywhere on "PRESS START", touch zones elsewhere (left third ↑/↓, centre
-START, right third ✕ top / ○ bottom).
-
-🚧 **In development:** making every control fully native to the phone (touch
-buttons on every screen, with no dependence on PS1 buttons).
-
-Built like the PC version, from a separate package:
-
-1. Download `KoroKoroRecomp-Android-v0.1.zip` from the
-   [release](https://github.com/elprogramadorloco-arch/korokoro-recomp/releases)
-   and unzip it to a **short path without accents** (e.g. `C:\KoroKoroAndroid`).
-2. Put your `.chd` (or `.cue` + `.bin`) in `data`.
-3. Run `run.bat`. The first run downloads only official tools at pinned
-   versions (the same portable toolchain, Eclipse Temurin JDK 17 and Google's
-   Android SDK/NDK through its `sdkmanager`; ~1.5 GB) and asks you to **accept
-   the Android SDK licenses**. No Android Studio needed.
-4. The result is `out\KoroKoroPostNin.apk`: copy it to your phone any way you
-   like and open it there (allow "install unknown apps"). No USB debugging or
-   PC connection needed.
-
-Needs 64-bit Windows 10/11, ~8 GB free disk and an Android 8.0+ phone with a
-64-bit (arm64) system, as almost every recent phone has. **The APK contains your disc:** install it on your own phone only and
-never share it.
-
----
-
 See [LEGAL.md](LEGAL.md) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+/ Consulta [LEGAL.md](LEGAL.md) y [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
