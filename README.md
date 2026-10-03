@@ -55,9 +55,46 @@ derivados de él.
 | Audio (SPU + música de CD) | OK |
 | Fases 2–10, tarjeta de memoria, final | Sin verificar todavía |
 
-### Planes a futuro
+### Versión para Android (alfa)
 
-- **Versión para Android** con soporte de **pantalla ancha** (widescreen).
+> ⚠️ **Alfa:** funciona, pero sigue en desarrollo; puede tener fallos y
+> todavía no se ha probado en muchos modelos de móvil.
+
+Incluye **pantalla ancha** que llena todo el móvil y **controles para
+móvil**:
+
+| Acción | Control |
+| --- | --- |
+| Girar el laberinto | Inclinar el móvil como un volante (acelerómetro) |
+| Menú de inicio y diálogos はい / いいえ | Tocar la opción, como un botón de Android |
+| Pantalla "PRESS START" | Tocar en cualquier parte |
+| Resto de pantallas | Zonas táctiles: tercio izquierdo ↑/↓, centro START, tercio derecho ✕ (arriba) / ○ (abajo) |
+
+🚧 **En desarrollo:** hacer que todos los controles sean totalmente nativos del
+móvil (botones táctiles en cada pantalla, sin depender de los botones de PS1).
+
+Se compila igual que la versión PC, con un paquete aparte:
+
+1. Descarga `KoroKoroRecomp-Android-v0.1.zip` de la
+   [release](https://github.com/elprogramadorloco-arch/korokoro-recomp/releases)
+   y descomprímelo en una ruta **corta y sin acentos** (por ejemplo
+   `C:\KoroKoroAndroid`).
+2. Copia tu `.chd` (o tu `.cue` + `.bin`) en `data`.
+3. Ejecuta `run.bat`. La primera vez descarga solo herramientas oficiales con
+   versiones fijadas (el mismo toolchain portable, Java Eclipse Temurin 17 y
+   el Android SDK/NDK de Google con su `sdkmanager`; unos 1,5 GB) y te pide
+   **aceptar las licencias del Android SDK** (responde `y`). No hace falta
+   Android Studio ni instalar nada a mano.
+4. Al terminar (20–60 min la primera vez) tendrás
+   `out\KoroKoroPostNin.apk`. Pásalo al móvil como prefieras (cable, nube,
+   etc.) y ábrelo allí; Android pedirá permitir "instalar apps desconocidas".
+   No hace falta depuración USB ni conectar el móvil al PC.
+
+Requisitos: Windows 10/11 de 64 bits, unos 8 GB libres y un móvil Android
+8.0 o superior con sistema de 64 bits (arm64), lo habitual en casi todos los
+móviles de los últimos años.
+
+**El APK contiene tu disco:** instálalo solo en tu móvil y no lo compartas.
 
 ---
 
@@ -92,9 +129,36 @@ This repository **does not contain the game**. You supply your own copy and
 `run.bat -Rebuild` forces a full rebuild; `run.bat -NoLaunch` builds only.
 Never publish `data`, `out` or `tools\.build`.
 
-### Future plans
+### Android version (alpha)
 
-- An **Android version** with **widescreen** support.
+> ⚠️ **Alpha:** it works, but it is still in development; expect bugs, and it
+> has not been tested on many phone models yet.
+
+Full-screen **widescreen** and **mobile controls**: tilt the phone to turn
+the maze, tappable Android-style buttons on the title menu and yes/no dialogs,
+tap anywhere on "PRESS START", touch zones elsewhere (left third ↑/↓, centre
+START, right third ✕ top / ○ bottom).
+
+🚧 **In development:** making every control fully native to the phone (touch
+buttons on every screen, with no dependence on PS1 buttons).
+
+Built like the PC version, from a separate package:
+
+1. Download `KoroKoroRecomp-Android-v0.1.zip` from the
+   [release](https://github.com/elprogramadorloco-arch/korokoro-recomp/releases)
+   and unzip it to a **short path without accents** (e.g. `C:\KoroKoroAndroid`).
+2. Put your `.chd` (or `.cue` + `.bin`) in `data`.
+3. Run `run.bat`. The first run downloads only official tools at pinned
+   versions (the same portable toolchain, Eclipse Temurin JDK 17 and Google's
+   Android SDK/NDK through its `sdkmanager`; ~1.5 GB) and asks you to **accept
+   the Android SDK licenses**. No Android Studio needed.
+4. The result is `out\KoroKoroPostNin.apk`: copy it to your phone any way you
+   like and open it there (allow "install unknown apps"). No USB debugging or
+   PC connection needed.
+
+Needs 64-bit Windows 10/11, ~8 GB free disk and an Android 8.0+ phone with a
+64-bit (arm64) system, as almost every recent phone has. **The APK contains your disc:** install it on your own phone only and
+never share it.
 
 ---
 
